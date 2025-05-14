@@ -9,7 +9,9 @@ function TaskItem() {
     useEffect(() => {
         fetch(`${import.meta.env.VITE_API_URL}/api/tasks/${id}`)
             .then(response => response.json())
-            .then(data => setTask(data));
+            .then(data => {
+                console.log(data)
+                setTask(data)});
     }, [id]);
 
     const handleDelete = () => {
@@ -29,6 +31,7 @@ function TaskItem() {
                 <div className='card'>
                     <div className='card-body'>
                         <h2 className='card-title'>{task.title}</h2>
+                        <p className='text-muted'>Creado el: {new Date(task.createdAt).toLocaleString()}</p>
                         <p className='card-text'>{task.description}</p>
                         <p className='card-text'>
                             <strong>Estado:</strong>{" "}

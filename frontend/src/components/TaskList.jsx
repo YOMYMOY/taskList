@@ -31,6 +31,9 @@ function TaskList() {
                         <Link to={`/task/${task.id}`} className='text-decoration-none flex-grow-1'>
                             {task.title}
                         </Link>
+                        <span className={`badge me-3 ${task.complete ? 'bg-success' : 'bg-warning text-dark'}`}>
+                            {task.complete ? 'Completada' : 'Pendiente'}
+                        </span>
                         <div className='btn-group btn-group-sm'>
                             <Link to={`/task/edit/${task.id}`} className='btn btn-warning'>Editar</Link>
                             <button onClick={() => handleDelete(task.id)} className='btn btn-danger'>Eliminar</button>
